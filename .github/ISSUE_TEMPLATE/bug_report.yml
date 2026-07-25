@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a problem with Preproduction Agent
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser & OS
+      placeholder: "e.g. Chrome 130 on macOS 15"
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where?
+      options:
+        - Dashboard
+        - Checklist
+        - Budget
+        - Crew
+        - Shooting plan
+        - Documents
+        - Visual board
+        - Missing check
+        - PPM preview / export
+        - Other
+    validations:
+      required: false
