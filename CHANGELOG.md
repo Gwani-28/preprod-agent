@@ -5,7 +5,13 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-- See the [roadmap](ROADMAP.md).
+### Added
+
+- **Format presets** — one click on the Dashboard sets the project format and
+  adds a checklist tuned for **short film / commercial / music video**. Existing
+  checklist items are preserved (only new, format-specific items are appended).
+
+See the [roadmap](ROADMAP.md) for what's next.
 
 ## [0.1.0] — 2026-06-13
 

@@ -30,8 +30,13 @@ you shoot, and exports a clean PPM Book.
 - **Documents** — freeform notes and document memos
 - **Visual board** — reference images and mood
 - **Missing check** — automatically surfaces items you haven't filled in yet
+- **Format presets** — one click sets the format and adds a checklist tuned for
+  **short film / commercial / music video** (each has its own priorities — client
+  approval and media rights for ads, artist/playback for MVs, etc.)
 - **PPM preview & export** — assemble everything into a PPM Book and export as
   HTML / Markdown / PDF
+- **Project backup** — export the whole project to a JSON file and import it back
+  (move a project between browsers/devices)
 - **Local-first** — all data is stored in your browser (`localStorage`); works
   offline and on mobile (open the dev server's Network URL on the same Wi-Fi)
 
@@ -73,9 +78,8 @@ browser from your current state.
 
 ## Roadmap
 
-See [ROADMAP.md](ROADMAP.md) — planned: import/export project files (JSON),
-template presets per format (short film / commercial / MV), collaborative
-sharing, and English UI localization.
+See [ROADMAP.md](ROADMAP.md) — planned: export polish, per-day call-sheet
+export, collaborative sharing, and English UI localization.
 
 ## Community
 

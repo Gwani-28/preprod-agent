@@ -13,6 +13,7 @@ import {
 } from './types'
 import { clear, load, save } from './storage'
 import { SEED } from './seed'
+import { FormatPreset, mergePresetItems } from './lib/presets'
 import { TabNav } from './components/TabNav'
 import { TopBar } from './components/TopBar'
 import { Dashboard } from './tabs/Dashboard'
@@ -76,6 +77,15 @@ export default function App() {
   const setAssets = (assets: VisualAsset[]) =>
     setState((s) => ({ ...s, ...stamp({ assets }) }))
 
+  const applyPreset = (preset: FormatPreset) =>
+    setState((s) =>
+      stamp({
+        ...s,
+        project: { ...s.project, format: preset.format },
+        checklist: mergePresetItems(s.checklist, preset),
+      }),
+    )
+
   const handleImport = (next: AppState) => setState(next)
   const handleReset = () => {
     clear()
@@ -98,7 +108,12 @@ export default function App() {
       <TabNav active={tab} onChange={setTab} counts={{ missing: criticalCount }} />
       <main className="flex-1 px-3 py-4 sm:px-4 sm:py-6">
         {tab === 'dashboard' && (
-          <Dashboard state={state} setProject={setProject} goto={setTab} />
+          <Dashboard
+            state={state}
+            setProject={setProject}
+            goto={setTab}
+            applyPreset={applyPreset}
+          />
         )}
         {tab === 'crew' && <Crew crew={state.crew} setCrew={setCrew} />}
         {tab === 'checklist' && (

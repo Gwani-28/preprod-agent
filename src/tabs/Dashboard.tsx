@@ -8,14 +8,16 @@ import { statsByCategory, statsOf } from '../lib/progress'
 import { detectIssues } from '../lib/missingCheck'
 import { daysBetween, daysUntil, ddayLabel } from '../lib/dday'
 import { formatKRW, totalOf } from '../lib/budget'
+import { FormatPreset, PRESETS } from '../lib/presets'
 
 interface Props {
   state: AppState
   setProject: (p: ProjectInfo) => void
   goto: (tab: TabKey) => void
+  applyPreset: (preset: FormatPreset) => void
 }
 
-export function Dashboard({ state, setProject, goto }: Props) {
+export function Dashboard({ state, setProject, goto, applyPreset }: Props) {
   const stats = statsOf(state.checklist)
   const byCat = statsByCategory(state.checklist)
   const issues = detectIssues(state)
@@ -289,12 +291,32 @@ export function Dashboard({ state, setProject, goto }: Props) {
               placeholder="프로젝트 제목 / 브랜드 캠페인 / MV 제목"
             />
           </Field>
-          <Field label="포맷">
+          <Field label="포맷" hint="프리셋을 누르면 포맷과 그 포맷 특유의 체크리스트가 채워집니다.">
             <TextInput
               value={state.project.format}
               onChange={(e) => update('format', e.target.value)}
               placeholder="단편영화 / 광고 / MV / 브랜디드 필름"
             />
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {PRESETS.map((preset) => (
+                <button
+                  key={preset.key}
+                  type="button"
+                  title={preset.hint}
+                  onClick={() => {
+                    if (
+                      confirm(
+                        `'${preset.name}' 프리셋을 적용합니다.\n포맷을 '${preset.format}'로 설정하고, 이 포맷 특유의 체크리스트 항목을 추가합니다. (기존 항목은 유지됩니다)`,
+                      )
+                    )
+                      applyPreset(preset)
+                  }}
+                  className="min-h-8 rounded-full border border-ink-700 bg-ink-800/60 px-3 text-[11px] font-medium text-ink-200 hover:border-ink-500 hover:text-ink-100"
+                >
+                  + {preset.name} 프리셋
+                </button>
+              ))}
+            </div>
           </Field>
           <Field label="장르 / 무드">
             <TextInput
