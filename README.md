@@ -12,6 +12,8 @@ browser — no account, no server, no data leaves your machine.
 
 **English** | [한국어](README.ko.md)
 
+![Preproduction Agent dashboard](docs/screenshot.png)
+
 ## What it does
 
 Preproduction on a short film, a commercial, or a music video means juggling a
